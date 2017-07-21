@@ -43,6 +43,9 @@ Now open the index.html file and start adding voting candidates and vote them.
 
 Many functionalities are for future purpose which is not being used currently.
 
+Screenshot of the front end:
+
+![alt text](https://github.com/akscipy/voting-dapp-truffle-angular/blob/master/dapp-basedon-truffle-angularjs.JPG)
 
 
 

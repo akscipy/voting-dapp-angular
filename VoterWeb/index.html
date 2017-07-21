@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Voting example dApp (Angularjs)</title>
+		<link href='bootstrap.min.css' rel='stylesheet' type='text/css'>
+		<script src="angular.min.js"></script>
+		<script src="web3.js"></script>
+		<script src="script.js"></script>
+	</head>
+	
+	<body ng-app="myDapp">
+		<div ng-controller = "dappDemoCtrl" >
+			<hr />
+			<div class="container-fluid">
+			  <h2 style="text-align:center;"><strong>Voting Application based on blockchain</strong></h2>
+			  <hr />
+			  <div class="panel-group col-md-7" style="border-right: 1px solid blue;">
+				<div class="panel panel-default">
+				  <div class="panel-heading" style="text-align:center;"><h4><strong>List of candidates</strong></h4></div>
+				  <div class="panel-body" class="table-responsive">
+					<table border = "1" class="table table-striped">
+					<tr>
+						<th>#</th>
+						<th>Address</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Vote Count</th>
+						<!-- <th>Vote Given</th> -->
+						<th>Vote</th>
+					</tr>
+					<tr ng-repeat="instance in candidateJsonData track by $index">
+						<td><strong>{{$index + 1}}</strong></td>
+						<td ng-repeat="(key, value) in instance"><strong>{{value}}</strong></td>
+						<td style="text-align:center;"><button type="button" class="btn btn-primary" ng-click="vote(instance, $index)">Vote</button></td>
+					</tr>
+				</table>
+				  
+				  </div>
+				</div>
+			  </div>
+			
+			  <div class="panel-group col-md-5">
+				<div class="panel panel-default">
+				  <div class="panel-heading" style="text-align:center;"><h4><strong>Add Candidate/Voter</strong></h4></div>
+				  <div class="panel-body">
+					<div class="container">
+					  <h2></h2>
+					  <form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="Candidate Address">Candidate Address:</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" ng-model="createCandidateObj.candidateAddress" placeholder="Candidate Address">
+							</div>
+						</div>
+						<div class="form-group"> 
+							<label class="control-label col-sm-2" for="First Name">First Name:</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" ng-model="createCandidateObj.firstName" placeholder="First Name">
+							</div>
+						</div>
+						<div class="form-group"> 
+							<label class="control-label col-sm-2" for="Last Name">Last Name:</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" ng-model="createCandidateObj.lastName" placeholder="Last Name">
+							</div>							
+						</div>
+						
+						<div class="form-group"> 
+							<label class="control-label col-sm-2" for="Candidate Type">Select Candidate Type:</label>
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="createCandidateObj.candidateType">
+									<option value='Candidate'>Candidate</option>
+									<option value='Voter'>Voter</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">        
+						  <div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default" ng-click="createCandidate()">Submit</button>
+						  </div>
+						</div>
+					  </form>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</body>
+</html>
